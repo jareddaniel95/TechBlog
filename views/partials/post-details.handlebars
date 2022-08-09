@@ -1,0 +1,19 @@
+<section class="card">
+    <header>
+        <a href="/post/{{id}}">
+            <header>{{post_title}}</header>
+            <img src="/images/{{paintings.[0].filename}}" alt="{{paintings.[0].description}}">
+        </a>
+  </header>
+  <section>
+    <section>
+        {{user.username}} > {{format_date created_at}}
+    </section>
+    <section>
+        {{post_content}}
+    </section>
+    <section>
+        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    </section>
+  </section>
+</section>

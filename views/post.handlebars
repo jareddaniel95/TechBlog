@@ -1,0 +1,8 @@
+{{> post-info post}}
+
+{{#if loggedIn}}
+<p>Leave a comment!</p>
+<script src="/javascript/comment.js"></script>
+{{/if}}
+
+{{> comments post.comments}}
