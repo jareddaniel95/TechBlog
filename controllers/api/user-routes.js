@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
     const data = await User.create({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password,
+      password: req.body.password.toString(),
     });
 
     req.session.save(() => {
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await data.checkPassword(req.body.password);
+    const validPassword = await data.checkPassword(req.body.password.toString()); //TODO
 
     if (!validPassword) {
       res

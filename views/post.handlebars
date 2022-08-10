@@ -1,8 +1,12 @@
-{{> post-info post}}
+{{> post-page post}}
 
 {{#if loggedIn}}
-<p>Leave a comment!</p>
-<script src="/javascript/comment.js"></script>
+<section>
+    <section><textarea name="comment"></textarea></section>
+    <section><button id="submit-comment">Comment</button></section>
+</section>
 {{/if}}
 
 {{> comments post.comments}}
+
+<script src="/js/comment.js"></script>
