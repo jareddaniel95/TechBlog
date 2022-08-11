@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt');
 
 class User extends Model {
     checkPassword(loginPw) {
-        //return bcrypt.compareSync(loginPw, this.password); TODO
-        return loginPw == this.password;
+        return bcrypt.compareSync(loginPw, this.password);
+        // return loginPw == this.password;
     }
 }
 
@@ -39,7 +39,7 @@ User.init(
     },
     {
       hooks: {
-        async beforeCreate(newUserData) {
+        beforeCreate: async (newUserData) => {
             newUserData.password = await bcrypt.hash(newUserData.password, 10);
             return newUserData;
         },

@@ -1,0 +1,15 @@
+<section>
+    <header>
+        <h1>Your Dashboard</h1>
+    </header>
+    <section>
+        <button id="create-post">Create Post</button>
+    </section>
+    <section>
+        {{#if postsList.length}}
+            {{#each postsList as |post|}}
+                {{> post-details post}}
+            {{/each}}
+        {{/if}}
+    </section>
+</section>
