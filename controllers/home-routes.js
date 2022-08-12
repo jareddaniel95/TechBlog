@@ -18,7 +18,8 @@ router.get('/', async (req, res) => {
                 model: User,
                 attributes: ['username']
             }
-        ]
+        ],
+        order: [['created_at', 'DESC']]
     });
 
     const posts = data.map((post) =>
@@ -61,7 +62,7 @@ router.get('/post/:id', async (req, res) => {
           }
         ],
       });
-      const post = data.get({ plain: true }); //TODO: Check if post is null
+      const post = data.get({ plain: true });
       res.render('post', { post, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);

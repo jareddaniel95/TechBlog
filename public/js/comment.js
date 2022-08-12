@@ -2,7 +2,8 @@ const commentFormHandler = async (event) => {
     event.preventDefault();
   
     const comment_content = document.querySelector('textarea[name="comment"]').value.trim();
-    const post_id = 1; //TODO
+    const location = window.location.toString().split('/');
+    const post_id = location[location.length - 1];
   
     if (comment_content) {
       const response = await fetch('/api/comments', {
@@ -12,7 +13,7 @@ const commentFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        // document.location.replace('/'); //TODO ?
+        document.location.reload();
         console.log(response);
       } else {
         alert('An error occured.');

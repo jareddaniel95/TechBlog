@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await data.checkPassword(req.body.password.toString()); //TODO
+    const validPassword = await data.checkPassword(req.body.password.toString());
 
     if (!validPassword) {
       res
