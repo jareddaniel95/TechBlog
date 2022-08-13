@@ -3,8 +3,7 @@ const postFormHandler = async (event) => {
   
     const post_title = document.querySelector('input[name="title"]').value.trim();
     const post_content = document.querySelector('textarea[name="content"]').value.trim();
-    const location = window.location.toString().split('/');
-    const post_id = location[location.length - 1];
+    const post_id = document.querySelector('input[name="post-id"]').value;
   
     if (post_title && post_content) {
       const response = await fetch(`/api/posts/${post_id}`, {

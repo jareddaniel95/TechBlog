@@ -2,11 +2,13 @@
 
 {{#if loggedIn}}
 <section>
-    <section><textarea name="comment"></textarea></section>
+    <section><textarea class="comment-editor" name="comment"></textarea></section>
     <section><button id="submit-comment">Comment</button></section>
 </section>
 {{/if}}
 
-{{> comments post.comments}}
+<section id="comments" class="mt-4">
+    {{> comments post.comments}}
+</section>
 
 <script src="/js/comment.js"></script>

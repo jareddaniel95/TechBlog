@@ -1,14 +1,13 @@
-<section>
-    <header>
-        {{title}}
+<section class="card my-2">
+    <input type="hidden" name="post-id" value="{{id}}" />
+    <header class="bg-danger p-1 text-white fw-bold">
+        {{post_title}}
     </header>
-    <section>
-        {{user.username}} > {{format_date created_at}}
+    <section class="p-2">
+        <b>{{user.username}}</b> > {{format_date created_at}}
+        <hr>
     </section>
-    <section>
-        {{post_content}}
-    </section>
-    <section id="comments">
-        {{> comments post.comments}}
+    <section class="px-2 pb-2">
+        {{{format_content post_content}}}
     </section>
 </section>

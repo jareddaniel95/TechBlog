@@ -2,14 +2,17 @@
     <header>
         <h1>Edit post</h1>
     </header>
-    <section>
-        <input name="title" value="{{post.post_title}}" />
-    </section>
-    <section>
-        <textarea name="content" class="post-editor">{{post.post_content}}</textarea>
-    </section>
-    <section>
-        <button id="submit-post">Submit</button>
+    <section class="editor">
+        <input type="hidden" name="post-id" value="{{post.id}}" />
+        <section>
+            <input name="title" class="post-title" value="{{post.post_title}}" />
+        </section>
+        <section>
+            <textarea name="content" class="post-editor">{{post.post_content}}</textarea>
+        </section>
+        <section>
+            <button id="submit-post">Submit</button>
+        </section>
     </section>
 </section>
 

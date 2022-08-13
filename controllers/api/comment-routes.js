@@ -25,6 +25,4 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-//TODO: Comment.update? Comment.delete?
-
 module.exports = router;

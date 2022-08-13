@@ -2,10 +2,10 @@
     {{#each this}}
     <section class='comment'>
         <section class='comment-header'>
-            {{user.username}} > {{format_date created_at}}
+            <b>{{user.username}}</b> > {{format_date created_at}}
         </section>
         <section class='comment-body'>
-            {{comment_content}}
+            {{{format_content comment_content}}}
         </section>
     </section>
     {{/each}}

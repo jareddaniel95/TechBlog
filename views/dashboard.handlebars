@@ -1,15 +1,19 @@
 <section>
-    <header>
-        <h1>Your Dashboard</h1>
+    <header class="pb-2">
+        <h1>{{possessive_grammar data.username}} Dashboard</h1>
     </header>
-    <section>
-        <a href="/dashboard/create/">Create Post</a>
+    <section class="py-1 px-2">
+        <a href="/dashboard/create/" class="create-link">Create Post</a>
     </section>
-    <section>
-        {{#if postsList.length}}
-            {{#each postsList as |post|}}
+    <section class="p-2">
+        {{#if data.postsList.length}}
+            {{#each data.postsList as |post|}}
                 {{> dash-post-details post}}
             {{/each}}
+        {{else}}
+            <section class="my-3 fs-3">
+                Your posts will appear here!
+            </section>
         {{/if}}
     </section>
 </section>

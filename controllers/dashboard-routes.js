@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
     try {
-        const data = await Post.findAll({
+        const posts = await Post.findAll({
             where: { user_id: req.session.user_id},
             attributes: ['id', 'post_title', 'created_at', 'post_content'],
             include: [
@@ -26,8 +26,14 @@ router.get('/', withAuth, async (req, res) => {
             ],
             order: [['created_at', 'DESC']]
         });
-        const postsList = data.map(p => p.get({plain: true}));
-        res.render('dashboard', {postsList, loggedIn: req.session.loggedIn});
+        const postsList = posts.map(p => p.get({plain: true}));
+
+        const user = await User.findByPk(req.session.user_id, {
+            attributes: ['username']
+        });
+        const username = user.username;
+        const data = {username, postsList};
+        res.render('dashboard', {data, loggedIn: req.session.loggedIn});
     } catch (err) {
         res.status(500).json(err);
     }
