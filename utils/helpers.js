@@ -1,3 +1,5 @@
+const { options } = require("../controllers");
+
 module.exports = {
   format_time: (date) => {
     return date.toLocaleTimeString();
@@ -19,5 +21,8 @@ module.exports = {
   },
   format_content: (text) => {
     return text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+  },
+  if_equals: (arg1, arg2) => {
+    return arg1 == arg2 ? options.fn(this) : options.inverse(this);
   }
 };

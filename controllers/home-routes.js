@@ -41,9 +41,9 @@ router.get('/post/:id', async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
   } else {
-    // If the user is logged in, allow them to view the gallery
+    // If the user is logged in, allow them to view the post
     try {
-      const data = await Post.findByPk(req.params.id, {
+      const postData = await Post.findByPk(req.params.id, {
         attributes: ['id', 'post_title', 'post_content', 'created_at'],
         include: [
           {
@@ -62,8 +62,10 @@ router.get('/post/:id', async (req, res) => {
           }
         ],
       });
-      const post = data.get({ plain: true });
-      res.render('post', { post, loggedIn: req.session.loggedIn });
+      const post = postData.get({ plain: true });
+      const session_user_id = req.session.user_id;
+      const data = {session_user_id, post}
+      res.render('post', { data, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

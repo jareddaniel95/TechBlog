@@ -1,4 +1,4 @@
-{{> post-page post}}
+{{> post-page data.post}}
 
 {{#if loggedIn}}
 <section>
@@ -8,7 +8,7 @@
 {{/if}}
 
 <section id="comments" class="mt-4">
-    {{> comments post.comments}}
+    {{> comments data}}
 </section>
 
 <script src="/js/comment.js"></script>

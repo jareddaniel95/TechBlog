@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 const sess = {
   secret: 'Super duper secret',
   cookie: {
-    maxAge: 600000,
+    maxAge: 900000,
   },
   resave: false,
   rolling: true,
@@ -37,6 +37,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 
 app.use(routes);
+
+hbs.handlebars.registerHelper('isCommentOwnedBySessionUser', function(commentOwner, options) {
+  return (commentOwner == options.data.session_user_id) ? options.fn(this) : options.inverse(this);
+});
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>

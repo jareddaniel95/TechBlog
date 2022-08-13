@@ -96,4 +96,22 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
+router.get('/editComment/:id', withAuth, async (req, res) => {
+    try {
+        const data = await Comment.findByPk(req.params.id, {
+            attributes: ['id', 'comment_content', 'user_id', 'post_id', 'created_at'],
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
+        });
+        const comment = data.get({plain: true});
+        res.render('edit-comment', {comment, loggedIn: req.session.loggedIn});
+    } catch (err) {
+        res.status(500).json(err); 
+    }
+});
+
 module.exports = router;
