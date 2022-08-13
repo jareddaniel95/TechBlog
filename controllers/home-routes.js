@@ -3,8 +3,8 @@ const { Post, User, Comment } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
-    const data = await Post.findAll({
-        attributes: ['id', 'post_title', 'post_content', 'created_at'],
+    const postData = await Post.findAll({
+        attributes: ['id', 'post_title', 'post_content', 'user_id', 'created_at'],
         include: [
             {
                 model: Comment,
@@ -22,12 +22,13 @@ router.get('/', async (req, res) => {
         order: [['created_at', 'DESC']]
     });
 
-    const posts = data.map((post) =>
+    const posts = postData.map((post) =>
       post.get({ plain: true })
     );
-
+    const session_user_id = req.session.user_id;
+    const data = {session_user_id, posts};
     res.render('homepage', {
-      posts,
+      data,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -44,7 +45,7 @@ router.get('/post/:id', async (req, res) => {
     // If the user is logged in, allow them to view the post
     try {
       const postData = await Post.findByPk(req.params.id, {
-        attributes: ['id', 'post_title', 'post_content', 'created_at'],
+        attributes: ['id', 'post_title', 'post_content', 'user_id', 'created_at'],
         include: [
           {
             model: Comment,

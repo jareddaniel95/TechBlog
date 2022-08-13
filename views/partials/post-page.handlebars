@@ -3,11 +3,15 @@
     <header class="bg-danger p-1 text-white fw-bold">
         {{post_title}}
     </header>
-    <section class="p-2">
+    <section id="post-header" class="p-2">
         <b>{{user.username}}</b> > {{format_date created_at}}
+        {{#isContentOwnedBySessionUser this.user_id}}
+            <a href="/dashboard/edit/{{id}}">Edit</a> | <a href="#" class="delete-post" data-id="{{id}}">Delete</a>
+        {{/isContentOwnedBySessionUser}}
         <hr>
     </section>
     <section class="px-2 pb-2">
         {{{format_content post_content}}}
     </section>
 </section>
+<script src="/js/delete-post.js"></script>

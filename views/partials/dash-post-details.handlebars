@@ -5,7 +5,7 @@
   <section class="p-2">
     <section>
         <input type="hidden" name="post-id" value="{{id}}" />
-        <b>{{user.username}}</b> > {{format_date created_at}} <a href="/dashboard/edit/{{id}}">Edit</a> | <a href="#" id="delete-post">Delete</a>
+        <b>{{user.username}}</b> > {{format_date created_at}} <a href="/dashboard/edit/{{id}}">Edit</a> | <a href="#" class="delete-post" data-id="{{id}}">Delete</a>
         <hr>
     </section>
     <section>

@@ -1,7 +1,12 @@
+:root {
+    --red: #dc3545;
+    --gold: gold;
+  }
+
 main a {
     text-decoration: none;
     font-weight: bold;
-    color: #dc3545;
+    color: var(--red);
 }
 
 .header-link a{
@@ -11,13 +16,13 @@ main a {
 }
 
 .header-link a:hover{
-    color: gold;
+    color: var(--gold);
 }
 
 nav a {
     text-decoration: none;
     font-weight: bold;
-    color: #dc3545;
+    color: var(--red);
     padding: 8px;
     border: 1px solid black;
     border-radius: 3px;
@@ -28,7 +33,7 @@ nav a {
 nav a:hover {
     color: white;
     padding: 8px;
-    background-color: #dc3545;
+    background-color: var(--red);
 }
 
 .user-input {
@@ -38,7 +43,7 @@ nav a:hover {
 }
 
 .create-link {
-    background-color: #dc3545;
+    background-color: var(--red);
     color: white;
     font-weight: bold;
     text-decoration: none;
@@ -47,7 +52,7 @@ nav a:hover {
 }
 
 .create-link:hover {
-    color: gold;
+    color: var(--gold);
 }
 
 .editor {
@@ -69,9 +74,22 @@ nav a:hover {
 }
 
 .comment {
-    border: 2px solid #dc3545;
+    border: 2px solid var(--red);
     border-radius: 3px;
     margin: 5px;
     padding: 3px;
     width: 50%;
+}
+
+button {
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 8px;
+    color: var(--red);
+    font-weight: bold;
+    background-color: white;
+}
+
+button:hover {
+    background-color: #EFEFEF;
 }

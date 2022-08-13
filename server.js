@@ -38,8 +38,8 @@ app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 
 app.use(routes);
 
-hbs.handlebars.registerHelper('isCommentOwnedBySessionUser', function(commentOwner, options) {
-  return (commentOwner == options.data.session_user_id) ? options.fn(this) : options.inverse(this);
+hbs.handlebars.registerHelper('isContentOwnedBySessionUser', function(contentOwner, options) {
+  return (contentOwner == options.data.session_user_id) ? options.fn(this) : options.inverse(this);
 });
 
 sequelize.sync({ force: false }).then(() => {

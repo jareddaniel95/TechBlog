@@ -12,7 +12,7 @@ const userData = [
     password: 'fun'
   },
   {
-    username: 'MadduxStewart',
+    username: 'Maddux Stewart',
     email: 'maddux.stewart@example.com',
     password: 'happy'
   },
@@ -20,6 +20,16 @@ const userData = [
     username: 'JamilCrawford',
     email: 'jcrawford89@example.com',
     password: 'test'
+  },
+  {
+    username: 'Alicia_Giles',
+    email: 'alicia.g92@example.com',
+    password: 'cool'
+  },
+  {
+    username: 'Marcus Arroyo',
+    email: 'marroyo88@example.com',
+    password: 'nice'
   }
 ];
 
